@@ -37,11 +37,11 @@ const actions = {
 const getters = {
   stockPortfolio(state, getters) {
     return state.stocks.map(stock => {
-      const record = getters.stocks.find(el => el.stockId === stock.stockId);
+      const record = getters.stocks.find(el => el.id === stock.stockId);
       return {
         ...stock,
-        stockPrice: record.stockPrice,
-        stockName: record.stockName
+        stockPrice: record.price,
+        stockName: record.name
       };
     });
   },

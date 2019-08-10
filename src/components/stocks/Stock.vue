@@ -12,7 +12,7 @@
           <input type="number" class="form-control" placeholder="quantity" v-model="quantity" />
         </div>
         <div class="pull-right mt-3">
-          <button class="btn btn-success" :disabled="quantity <= 0" @click="stockPurchase">Buy</button>
+          <button class="btn btn-success" :disabled="quantity <= 0" @click="sellStock">Buy</button>
         </div>
       </div>
     </div>
@@ -27,7 +27,7 @@ export default {
     };
   },
   methods: {
-    stockPurchase() {
+    sellStock() {
       const order = {
         stockId: this.stock.id,
         stockPrice: this.stock.price,
