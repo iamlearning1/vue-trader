@@ -8,11 +8,16 @@
         </h3>
       </div>
       <div class="card-body">
-        <div class="pull-left">
+        <div>
           <input type="number" class="form-control" placeholder="quantity" v-model="quantity" />
+          <p v-if="insufficientFunds">Sorry! You have insufficient funds.</p>
         </div>
-        <div class="pull-right mt-3">
-          <button class="btn btn-success" :disabled="quantity <= 0" @click="sellStock">Buy</button>
+        <div class="mt-3">
+          <button
+            class="btn btn-success"
+            :disabled="quantity <= 0 || insufficientFunds"
+            @click="sellStock"
+          >Buy</button>
         </div>
       </div>
     </div>
@@ -25,6 +30,11 @@ export default {
     return {
       quantity: 0
     };
+  },
+  computed: {
+    insufficientFunds() {
+      return this.$store.getters.funds < this.stock.price * this.quantity;
+    }
   },
   methods: {
     sellStock() {
@@ -44,5 +54,8 @@ export default {
 <style scoped>
 small {
   font-size: 1.2rem;
+}
+p {
+  color: red;
 }
 </style>
