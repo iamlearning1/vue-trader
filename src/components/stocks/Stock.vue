@@ -28,11 +28,12 @@ export default {
   },
   methods: {
     stockPurchase() {
-      const data = {
+      const order = {
         stockId: this.stock.id,
         stockPrice: this.stock.price,
         stockQuantity: this.quantity
       };
+      this.$store.dispatch("buyStocks", order);
       this.quantity = 0;
     }
   },
