@@ -12,12 +12,23 @@
           <a class="nav-link">Stocks</a>
         </router-link>
       </ul>
+      <strong class="navbar-text navbar-right pr-3">Funds: {{ funds }}</strong>
       <form class="form-inline my-2 my-lg-0">
         <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Log out</button>
       </form>
     </div>
   </nav>
 </template>
+
+<script>
+export default {
+  computed: {
+    funds() {
+      return this.$store.getters.funds;
+    }
+  }
+};
+</script>
 
 <style>
 .active {
